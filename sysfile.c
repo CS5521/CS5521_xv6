@@ -262,6 +262,9 @@ create(char *path, short type, short major, short minor)
     panic("create: ialloc");
 
   ilock(ip);
+  int i;
+  //initialize block pointers
+  for (i = 0; i < 13; i++) ip->addrs[i] = 0;
   ip->major = major;
   ip->minor = minor;
   ip->nlink = 1;
